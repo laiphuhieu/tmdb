@@ -1,11 +1,8 @@
 import React from "react";
+import AppRoutes from "./routes";
 
 function App() {
-  return (
-    <div className="pt-[50px]">
-      <h1>this is app page</h1>
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
