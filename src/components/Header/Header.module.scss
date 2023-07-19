@@ -25,6 +25,7 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 .content {
@@ -46,7 +47,8 @@
   flex-wrap: wrap;
   list-style: none;
   .main-nav-list {
-    margin-right: 16px;
+    margin-right: 14px;
+    padding: 8px;
     &:hover .sub-nav {
       display: block;
       left: auto;
