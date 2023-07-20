@@ -49,3 +49,21 @@ body {
     padding: 4px 8px;
   }
 }
+
+//custom scrollbar
+
+.column-container {
+  .scrollbar {
+    &::-webkit-scrollbar-track {
+      background: 0, 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+  }
+}
