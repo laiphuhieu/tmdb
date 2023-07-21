@@ -50,9 +50,15 @@ body {
   }
 }
 
+.trending {
+  :where(.css-dev-only-do-not-override-1jr9qlj).ant-switch.ant-switch-checked {
+    background: #172538 !important;
+  }
+}
+
 //custom scrollbar
 
-.column-container {
+.scroll-wrap {
   .scrollbar {
     &::-webkit-scrollbar-track {
       background: 0, 0;
