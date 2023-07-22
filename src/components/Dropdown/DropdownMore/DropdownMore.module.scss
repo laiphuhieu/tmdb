@@ -1,0 +1,65 @@
+@import "../../../assets/styles/referent.scss";
+
+.more {
+  background-color: $main-white;
+  color: $main-black;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  width: 130px;
+  .more-container {
+    .group {
+      border-top: 1px solid rgba(33, 37, 41, 0.15);
+      padding: 4px 0;
+    }
+    .no-border {
+      border: none;
+    }
+
+    .more-content {
+      padding: 6px 20px;
+      font-size: $font-xs;
+      align-items: center;
+      display: flex;
+      &:hover {
+        background-color: $dark-blue;
+        color: $main-white !important;
+      }
+      .list {
+        display: inline-flex;
+        align-items: center;
+        background-color: transparent;
+        .list-btn {
+          background-image: url("../../../assets/images/list.svg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          margin-right: 4px;
+          width: 17.27px;
+          height: 17.27px;
+        }
+        .heart-btn {
+          background-image: url("../../../assets/images/heart.svg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          margin-right: 4px;
+          width: 17.27px;
+          height: 17.27px;
+        }
+        .bookmark-btn {
+          background-image: url("../../../assets/images/bookmark.svg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          margin-right: 4px;
+          width: 17.27px;
+          height: 17.27px;
+        }
+        .rating-btn {
+          background-image: url("../../../assets/images/rating.svg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          margin-right: 4px;
+          width: 17.27px;
+          height: 17.27px;
+        }
+      }
+    }
+  }
+}

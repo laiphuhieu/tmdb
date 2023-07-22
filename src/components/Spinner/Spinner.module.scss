@@ -1,0 +1,46 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+}
+
+.spinner-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  &::before {
+    content: "";
+    border-width: 1px;
+    font-size: 64px;
+    margin-top: -0.5em;
+    margin-left: -0.5em;
+    width: 1em;
+    height: 1em;
+    animation: spinner 0.7s linear infinite;
+  }
+  &::after {
+    content: "";
+    border-width: 1px;
+    font-size: 4em;
+    margin-top: -0.25em;
+    margin-left: -0.25em;
+    width: 0.5em;
+    height: 0.5em;
+    animation: spinner reverse 1.4s linear infinite;
+  }
+}

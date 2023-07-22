@@ -2,13 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./variables";
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Poppins, sans-serif;
+  font-family: $font-Source-Pro, $font-Arial, sans-serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
+  font-size: $font-main;
+  font-weight: $font-medium;
+  color: $main-black;
+}
+
+h2 {
+  font-size: $font-main;
+  line-height: 1;
+  font-weight: $font-bold;
+}
+
+h3 {
+  font-size: $font-m;
+  font-weight: $font-semi-bold;
+  margin: 0;
+}
+
+p {
+  font-size: $font-xs;
+  font-weight: $font-light;
+  color: $grey;
+}
+
+//custom tippy
+
+body {
+  .tippy-content {
+    padding: 0;
+  }
+}
+
+.profile {
+  .tippy-content {
+    padding: 4px 8px;
+  }
+}
+
+.trending {
+  :where(.css-dev-only-do-not-override-1jr9qlj).ant-switch.ant-switch-checked {
+    background: #172538 !important;
+  }
+}
+
+//custom scrollbar
+
+.scroll-wrap {
+  .scrollbar {
+    &::-webkit-scrollbar-track {
+      background: 0, 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+  }
 }
