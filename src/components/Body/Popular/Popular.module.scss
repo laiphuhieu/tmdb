@@ -1,0 +1,30 @@
+@import "../../../assets/styles/referent.scss";
+@import "../../../assets/styles/all.scss";
+
+.popular {
+  background-position: 50% 200px;
+  background-size: 1300px;
+  background-repeat: no-repeat;
+  height: 40vh;
+  transform: translateY(46px);
+}
+
+.inner-content {
+  max-width: 1300px;
+  width: 100%;
+}
+
+.column-container {
+  .column {
+    padding-top: 30px;
+    .column-header {
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      h2 {
+        margin-right: 20px;
+      }
+    }
+  }
+}

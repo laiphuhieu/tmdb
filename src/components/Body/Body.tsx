@@ -3,6 +3,7 @@ import React from "react";
 import New from "./New/New";
 import Trending from "./Trending/Trending";
 import Trailers from "./Trailers/Trailers";
+import Popular from "./Popular/Popular";
 
 const Body = () => {
   return (
@@ -10,6 +11,7 @@ const Body = () => {
       <New />
       <Trending />
       <Trailers />
+      <Popular />
     </main>
   );
 };

@@ -1,52 +1,56 @@
-import React, { useCallback, useEffect, useState } from "react";
-
-import styles from "./TrailersFilter.module.scss";
-import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
-
+import React, { useCallback, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 
-interface ItemTv {
+import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
+import styles from "./PopularFilter.module.scss";
+
+interface Item {
+  name: string;
   id: number;
+  vote_average: number;
+  first_air_date: string;
   poster_path: string;
-  original_title: string;
-  title: string;
 }
 
-const TrailersFilterInTheater = () => {
-  const [trailersOnTv, setTrailersInTheater] = useState([]);
+const PopularInTheater = () => {
+  const [PopularTheater, setPopularInTheater] = useState([]);
 
-  const getItemOnTv = useCallback(() => {
+  const getPopularOnTv = useCallback(() => {
     axios
-      .get("https://api.themoviedb.org/3/movie/top_rated", {
+      .get("https://api.themoviedb.org/3/tv/popular?language=vi&page=2", {
         params: { language: "vi" },
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMGQ4NzdiOGY2Y2Q5NjNhNjU5NGQ2OTFjNzdkMjc4MyIsInN1YiI6IjY0YWY2NWY3M2UyZWM4MDE0ZjRhZTczMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZY3Kb416Ey4F3SVm5FeHosO8eD9AdDYOYbw4N_jieUE`,
         },
       })
       .then((res) => {
-        setTrailersInTheater(res.data.results);
+        setPopularInTheater(res.data.results);
       });
   }, []);
 
   useEffect(() => {
-    getItemOnTv();
-  }, [getItemOnTv]);
+    getPopularOnTv();
+  }, [getPopularOnTv]);
   return (
     <div className={`${styles["scroll-wrap"]}`}>
       <div className={`${styles["scroll-loaded"]} ${styles["scrollbar"]}`}>
-        {trailersOnTv.map((result: ItemTv, id: number) => {
+        {PopularTheater.map((result: Item, id: number) => {
           return (
-            <div key={id} className={`${styles["card-style-2"]}`}>
+            <div key={id} className={` ${styles["card-style-1"]}`}>
               <div className={`${styles["card-img"]}`}>
                 <div className={`${styles["wrapper"]}`}>
-                  <Link to={`/tv/${result.id}`} title={result.original_title}>
+                  <Link
+                    to={`/movie/${result.id}`}
+                    title={result.name}
+                    className="w-[100%] h-[100%] inline-block"
+                  >
                     <img
                       loading="lazy"
                       src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-                      alt={result.title}
-                      className="w-[100%] h-[100%] inline-block object-cover"
+                      alt={result.name}
+                      className="w-[100%] h-[100%] inline-block "
                     />
                   </Link>
                 </div>
@@ -72,17 +76,33 @@ const TrailersFilterInTheater = () => {
               </div>
 
               <div className={`${styles["card-content"]}`}>
-                <h2 className="text-center text-[19.2px]">
+                <div className={`${styles["consensus"]}`}>
+                  <div className={`${styles["outer-ring"]}`}>
+                    <div className={`${styles["user-score"]}`}>
+                      <div className={`${styles["percent"]}`}>
+                        <span>{Math.round(result.vote_average) * 10}</span>
+                      </div>
+                      <canvas
+                        height="34"
+                        width="34"
+                        className={`${styles["canvas"]}`}
+                      ></canvas>
+                    </div>
+                  </div>
+                </div>
+                <h2>
                   <Link
-                    to={`/tv/${result.id}`}
-                    title={result.title}
+                    to={`/movie/${result.id}`}
+                    title={result.name}
                     className={`${styles["content-title"]}`}
                   >
-                    {result.title}
+                    {result.name}
                   </Link>
                 </h2>
-                <h3 className="text-center text-[16px]">{result.title}</h3>
+                <p>{result.first_air_date}</p>
               </div>
+
+              <div className={`${styles["card-hover"]}`}></div>
             </div>
           );
         })}
@@ -91,4 +111,4 @@ const TrailersFilterInTheater = () => {
   );
 };
 
-export default TrailersFilterInTheater;
+export default PopularInTheater;
