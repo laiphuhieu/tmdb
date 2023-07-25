@@ -1,12 +1,40 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
-export default axios.create({
-  baseURL: "http://api.themoviedb.org/3",
-  headers: {
+import { BASE_URL } from "@/config/app.config";
+
+const axiosInstance = (
+  token?: string,
+  isFullAxiosResponse = false,
+  h?: Record<string, string>
+): AxiosInstance => {
+  const headers: Record<string, string> = {
+    ...h,
     Accept: "application/json",
-  },
-  params: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMGQ4NzdiOGY2Y2Q5NjNhNjU5NGQ2OTFjNzdkMjc4MyIsInN1YiI6IjY0YWY2NWY3M2UyZWM4MDE0ZjRhZTczMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZY3Kb416Ey4F3SVm5FeHosO8eD9AdDYOYbw4N_jieUE ",
-  },
-});
+    "Content-Type": "application/json",
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  const instance = axios.create({
+    baseURL: BASE_URL,
+    timeout: 30 * 1000,
+    headers,
+  });
+
+  instance.interceptors.response.use(
+    (response) => {
+      if (isFullAxiosResponse) return response;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return response.data as any;
+    },
+    (error) => {
+      return Promise.reject(error?.response);
+    }
+  );
+
+  return instance;
+};
+
+export default axiosInstance;
