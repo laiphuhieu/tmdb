@@ -2,6 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
 import styles from "./TrendingFilter.module.scss";
@@ -10,7 +12,6 @@ import { TrendingResult } from "@/types/trending";
 import { API_TOKEN } from "@/config/app.config";
 
 const TrendingDay = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [trendingDay, setTrendingDay] = useState<TrendingResult[]>([]);
 
   const getTrendingDayData = useCallback(async () => {
@@ -73,18 +74,26 @@ const TrendingDay = () => {
 
                   <div className={`${styles["card-content"]}`}>
                     <div className={`${styles["consensus"]}`}>
-                      <div className={`${styles["outer-ring"]}`}>
-                        <div className={`${styles["user-score"]}`}>
-                          <div className={`${styles["percent"]}`}>
-                            <span>{Math.round(result.vote_average) * 10}</span>
-                          </div>
-                          <canvas
-                            height="34"
-                            width="34"
-                            className={`${styles["canvas"]}`}
-                          ></canvas>
+                      <CircularProgressbarWithChildren
+                        value={Math.round(result.vote_average) * 10}
+                        className={`${styles["circular-bar"]}`}
+                      >
+                        <div
+                          className={`${styles["circular-text"]}`}
+                          style={{
+                            fontSize: "13px",
+                            color: "#fff",
+                            fontWeight: "500",
+                          }}
+                        >
+                          <span>
+                            <strong>
+                              {Math.round(result.vote_average) * 10}
+                            </strong>
+                            <sup style={{ fontSize: "7px" }}>%</sup>
+                          </span>
                         </div>
-                      </div>
+                      </CircularProgressbarWithChildren>
                     </div>
                     <h2>
                       <Link
