@@ -50,10 +50,22 @@ body {
   }
 }
 
-.trending {
-  :where(.css-dev-only-do-not-override-1jr9qlj).ant-switch.ant-switch-checked {
-    background: #172538 !important;
-  }
+//custom circular bar
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: #204529;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #21d07a;
+}
+
+.circular-text {
+  width: 89%;
+  transform: translateY(105px);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 //custom scrollbar

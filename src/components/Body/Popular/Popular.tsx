@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 
 import styles from "./Popular.module.scss";
@@ -17,7 +18,7 @@ const Trending = () => {
       <div className={`${styles["column-container"]}`}>
         <div className={`${styles["column"]}`}>
           <div className={`${styles["column-header"]}`}>
-            <h2>Trending</h2>
+            <h2>What's Popular</h2>
             <Switch
               checkedChildren="Today"
               unCheckedChildren="This week"
