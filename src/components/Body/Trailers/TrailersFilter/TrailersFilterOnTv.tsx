@@ -46,7 +46,7 @@ const TrailersFilterOnTv = () => {
                       loading="lazy"
                       src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                       alt={result.title}
-                      className="w-[100%] h-[100%] inline-block "
+                      className="w-[100%] h-[100%] inline-block object-cover"
                     />
                   </Link>
                 </div>
