@@ -1,0 +1,53 @@
+@import "../../assets/styles/referent.scss";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0;
+  color: #fff;
+  background: $dark-blue;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-between;
+  transform: translateY(125px);
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: $main-white;
+    .join {
+      text-align: right;
+      position: relative;
+      top: -36px;
+      right: 0;
+      margin-right: 16px;
+      .rounded {
+        position: relative;
+        top: 40px;
+        left: -25px;
+        border-color: #fff;
+        background-color: #fff;
+        color: rgba(1, 180, 228, 1);
+        font-size: 18.72px;
+        display: inline-block;
+        word-wrap: break-word;
+        white-space: normal;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        padding: 8px 16px;
+        transition: linear 0.1s;
+        font-weight: $font-semi-bold;
+      }
+    }
+  }
+  h3 {
+    font-size: 20px;
+  }
+}
