@@ -1,0 +1,108 @@
+@import "../../../assets/styles/referent.scss";
+
+.inner-content {
+  max-width: 1400px;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 476px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  transform: translateY(120px);
+  .content-wrapper {
+    padding: 30px 40px;
+    max-width: 1400px;
+    width: 100%;
+    .column-wrapper {
+      width: 100%;
+      .column-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .dot {
+          border-radius: 50%;
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-right: 10px;
+          &.all {
+            background: $gauge1;
+          }
+          &.this-week {
+            background: $gauge2;
+          }
+        }
+      }
+      .column-content {
+        padding-top: 20px;
+        .leaderboard {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          list-style-position: inside;
+          display: flex;
+          flex-wrap: wrap;
+          li {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            width: 50%;
+            margin: 0 0 20px;
+            &:nth-child(odd) {
+              padding-right: 10px;
+            }
+            &:nth-child(even) {
+              padding-left: 10px;
+            }
+            .avatar {
+              min-width: 56px;
+              width: 56px;
+              height: 56px;
+              margin-right: 10px;
+              img {
+                border-radius: 50%;
+              }
+            }
+            .data {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              align-content: center;
+              flex-wrap: wrap;
+              .meter {
+                height: 8px;
+                margin-top: 6px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                .gauge {
+                  height: 100%;
+                  min-width: 40px;
+                  border-radius: 4px;
+                  background: $gauge1;
+                }
+                .gauge2 {
+                  height: 100%;
+                  min-width: 40px;
+                  border-radius: 4px;
+                  background: $gauge2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .gauge {
+//   background: $gauge1;
+//   height: 8px;
+//   min-width: 40px;
+//   border-radius: 4px;
+// }
