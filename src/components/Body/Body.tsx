@@ -4,6 +4,7 @@ import New from "./New/New";
 import Trending from "./Trending/Trending";
 import Trailers from "./Trailers/Trailers";
 import Popular from "./Popular/Popular";
+import Leaderboard from "./Leaderboard/Leaderboard";
 
 const Body = () => {
   return (
@@ -12,6 +13,7 @@ const Body = () => {
       <Trending />
       <Trailers />
       <Popular />
+      <Leaderboard />
     </main>
   );
 };
