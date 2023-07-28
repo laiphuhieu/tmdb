@@ -1,6 +1,26 @@
 @import "../../../../assets/styles/referent.scss";
 @import "../../../../assets/styles/all.scss";
 
+.scroll-wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  &::after {
+    content: "";
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0,
+      #fff 100%
+    );
+    will-change: opacity;
+  }
+}
+
 .scroll-loaded {
   min-height: 0;
   height: auto;
