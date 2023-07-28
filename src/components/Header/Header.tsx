@@ -11,6 +11,8 @@ import { PlusIcon, Notification } from "../icons/icons";
 import DropdownLists from "../Dropdown/DropdownLists/DropdownLists";
 import DropdownNotification from "../Dropdown/DropdownNotification/DropdownNotification";
 import DropdownProfile from "../Dropdown/DropdownProfile/DropdownProfile";
+import Search from "./Search";
+import { ReactComponent as SearchBtn } from "../..//assets/images/searchBlue.svg";
 
 const Header = () => {
   return (
@@ -96,6 +98,26 @@ const Header = () => {
                       />
                     </button>
                   </Tippy>
+                </Tippy>
+              </li>
+
+              <li className="ml-[30px]  flex">
+                <Tippy
+                  content={<Search />}
+                  placement="bottom"
+                  maxWidth="100%"
+                  animation="fade"
+                  arrow={false}
+                  theme="light"
+                  trigger="click"
+                  touch={true}
+                  appendTo="parent"
+                  hideOnClick={"toggle"}
+                  interactive={true}
+                >
+                  <button aria-haspopup="true">
+                    <SearchBtn className="w-[29.11px] h-[29.11px]" />
+                  </button>
                 </Tippy>
               </li>
             </ul>
