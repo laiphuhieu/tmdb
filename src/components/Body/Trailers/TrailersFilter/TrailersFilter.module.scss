@@ -31,6 +31,7 @@
   box-shadow: none;
   border-radius: 8px;
   margin-left: 20px;
+  z-index: 1;
   &:first-child {
     margin-left: 40px;
   }
@@ -40,7 +41,10 @@
     height: calc(300px / 1.78);
     transition: all 0.2s ease-in-out;
     transform: scale(1);
-    overflow: hidden;
+    z-index: 1;
+    &:hover {
+      transform: scale(1.05);
+    }
     .wrapper {
       display: block;
       border-radius: 8px;
@@ -102,4 +106,22 @@
       }
     }
   }
+}
+
+.play-btn {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
 }
