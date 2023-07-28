@@ -35,7 +35,8 @@ const TrailersFilterOnTv = () => {
         resultId
       );
       const trailerByIdResults = trailerDataById.videos.results.find(
-        (vid) => vid.name === "Official Trailer"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (vid: any) => vid.name === "Official Trailer"
       );
       setTrailerById(trailerByIdResults);
       setCurrentTrailerId(trailerByIdResults?.key);
