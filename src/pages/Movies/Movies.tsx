@@ -1,16 +1,17 @@
 import React from "react";
 
-import Body from "@/components/Body/Body";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import Main from "@/layouts/Main/Main";
+import Layout from "@/layouts/components/Layout";
+import Container from "@/layouts/components/Container/Container";
+
 
 const Movies = () => {
   return (
-    <div>
-      <Header />
-      <Body />
-      <Footer />
-    </div>
+    <Layout>
+      <Container>
+        <Main />
+      </Container>
+    </Layout>
   );
 };
 
