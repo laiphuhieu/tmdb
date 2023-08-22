@@ -11,7 +11,7 @@ export interface Trailer extends IEntity {
         iso_639_1: string;
         iso_3166_1: string;
         name: string;
-        key:  undefined;
+        key: undefined;
         site: string;
         size: number;
         type: string;
@@ -28,5 +28,5 @@ export interface TrailerResult extends IEntity {
   vote_average: number;
   first_air_date: string;
   poster_path: string;
-  key: string
+  key: string;
 }
