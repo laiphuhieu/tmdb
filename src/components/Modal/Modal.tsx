@@ -1,13 +1,13 @@
 import React from "react";
 
 import styles from "./Modal.module.scss";
+import Button from "../Button/Button";
 
 interface ModalProps {
-  children: React.ReactNode
-  isShowing : boolean
-  hide: () => void
+  children: React.ReactNode;
+  isShowing: boolean;
+  hide: () => void;
 }
-
 
 const Modal = ({ isShowing, hide, children }: ModalProps) => {
   return (
@@ -25,15 +25,14 @@ const Modal = ({ isShowing, hide, children }: ModalProps) => {
             <div className={`${styles["modal"]}`}>
               <div className={`${styles["modal-header"]}`}>
                 <h2 className={`${styles["modal-title"]}`}>Official Trailer</h2>
-                <button
+
+                <Button
                   type="button"
                   className={`${styles["modal-close-button"]}`}
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={hide}
+                  action={hide}
                 >
                   <span aria-hidden="true">&times;</span>
-                </button>
+                </Button>
               </div>
               {children}
             </div>
