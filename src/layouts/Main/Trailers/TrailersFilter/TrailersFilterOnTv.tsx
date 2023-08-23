@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Tippy from "@tippyjs/react";
 import Modal from "@/components/Modal/Modal";
+import Button from "@/components/Button/Button";
 
 const TrailersFilterOnTv = () => {
   const [trailersOnTv, setTrailersOnTv] = useState<TrailerResult[]>([]);
@@ -76,12 +77,12 @@ const TrailersFilterOnTv = () => {
                     className="w-[100%] h-[100%] inline-block "
                   />
 
-                  <button
+<Button
                     className={`${styles["button-default"]}`}
-                    onClick={() => handlePlayTrailer(result.id)}
+                    action={() => handlePlayTrailer(result.id)}
                   >
                     <PlayBtn />
-                  </button>
+                  </Button>
                   
                 </div>
 

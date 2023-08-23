@@ -2,6 +2,8 @@ import React from "react";
 
 import styles from "./New.module.scss";
 
+import Button from "@/components/Button/Button";
+
 const New = () => {
   return (
     <section className={`${styles["inner-content"]} ${styles["new-index"]}`}>
@@ -29,9 +31,17 @@ const New = () => {
                     className={`${styles["search-area"]}`}
                   />
                 </label>
-                <button type="submit" className={`${styles["search-btn"]}`}>
+
+                <Button
+                  className={`${styles["search-btn"]}`}
+                  type="submit"
+                  height="46px"
+                  border="0"
+                  color="white"
+                  radius="30px"
+                >
                   Search
-                </button>
+                </Button>
               </form>
             </div>
           </div>
