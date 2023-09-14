@@ -1,0 +1,67 @@
+@import "@/assets/styles/referent.scss";
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  &:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  &__bottom {
+    top: 110%;
+    left: 73%;
+    margin-left: -60px;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border: 5px solid;
+      border-color: transparent transparent #032541 transparent;
+    }
+  }
+  &__top {
+    bottom: 110%;
+    left: 50%;
+    margin-left: -35px;
+    &::after {
+      content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid;
+    border-color: #032541 transparent transparent transparent;
+    }
+  }
+  .tooltip-text {
+    visibility: visible;
+    position: absolute;
+    font-size: $font-xs;
+    max-width: 140px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    background-color: #032541;
+    transition: opacity 0.3s;
+    color: $main-white;
+    .arrow {
+      position: absolute;
+      left: 48%;
+      top: -10px;
+      z-index: 1;
+    }
+    &.light {
+      background-color: $main-white;
+      color: $grey4;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    &.dark {
+      background-color: $grey4;
+      color: $main-white;
+    }
+  }
+}

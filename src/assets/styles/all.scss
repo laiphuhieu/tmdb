@@ -76,12 +76,18 @@ body {
 
 //custom circular bar
 
-.CircularProgressbar .CircularProgressbar-trail {
-  stroke: #204529;
-}
-
-.CircularProgressbar .CircularProgressbar-path {
-  stroke: #21d07a;
+.CircularProgressbar {
+  .CircularProgressbar-trail {
+    stroke: #204529;
+  }
+  .CircularProgressbar-path {
+    stroke: #21d07a;
+  }
+  .CircularProgressbar-text {
+    fill: $main-white;
+    font-size: $font-s;
+    font-weight: $font-extra-bold;
+  }
 }
 
 .circular-text {
@@ -110,18 +116,8 @@ body {
   }
 }
 
-//custom popup
-#popup-root {
-  .popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
-  }
-  .popup-content {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%);
-  }
-  .popup-arrow {
-    color: transparent;
-  }
+//custom tippy
+
+#tippy-10, #tippy-150, #tippy-20 {
+  transform: translate(0px, 64px) !important; 
 }

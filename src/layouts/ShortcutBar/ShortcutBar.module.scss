@@ -1,0 +1,68 @@
+@import "@/assets/styles/referent.scss";
+
+.sc-nav-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  .sc-nav-list {
+    margin-right: 14px;
+    padding: 8px;
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   width: 30px;
+    //   height: 3px;
+    //   background-color: red;
+    // }
+
+    &:hover .sc-sub-nav {
+      display: block;
+      left: auto;
+    }
+
+    .sc-nav-link {
+      color: $main-black;
+    }
+  }
+}
+
+.sc-sub-nav {
+  display: none;
+  position: absolute;
+  top: 14%;
+  max-width: 173.078px;
+  max-height: 699.4px;
+  background-color: $main-white;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #000;
+  font-size: $font-xs;
+  padding: 8px 0;
+  z-index: 10;
+
+  .sc-sub-nav-list {
+    position: relative;
+    display: flex;
+    font-size: $font-xs;
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    .sc-sub-nav-link {
+      padding: 3px 40px 3px 21px;
+      font-weight: $font-regular;
+    }
+  }
+
+  .sc-sub-nav-item {
+    flex: 1 1 auto;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-direction: row;
+    padding: 3px 64px 3px 24px;
+    color: $main-black;
+    font-weight: $font-regular;
+  }
+}
