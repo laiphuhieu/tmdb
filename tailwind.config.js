@@ -24,7 +24,12 @@ module.exports = {
       xl: "1250px",
       "2xl": "1440px",
     },
+    backgroundImage: {
+      'detailMovie': 'url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/jZIYaISP3GBSrVOPfrp98AMa8Ng.jpg)',
+      'trailerImg': 'url(https://i.ytimg.com/vi/kBzLeIowdjA/hqdefault.jpg)',
+      'customBg': 'linear-gradient'
+    },
     extend: {},
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };

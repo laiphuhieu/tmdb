@@ -1,15 +1,88 @@
 import { IEntity } from "./common";
 
+export interface TrendingResult extends IEntity {
+  adult: false;
+  backdrop_path: string;
+  belongs_to_collection: null;
+  budget: 104000000;
+  genres: [
+    {
+      id: number;
+      name: string;
+    },
+    {
+      id: number;
+      name: string;
+    },
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: [
+    {
+      id: number;
+      logo_path: string;
+      name: string;
+      origin_country: string;
+    },
+    {
+      id: number;
+      logo_path: null;
+      name: string;
+      origin_country: string;
+    },
+    {
+      id: 128064;
+      logo_path: string;
+      name: string;
+      origin_country: string;
+    }
+  ];
+  production_countries: [
+    {
+      iso_3166_1: string;
+      name: string;
+    }
+  ];
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: [
+    {
+      english_name: string;
+      iso_639_1: string;
+      name: string;
+    },
+    {
+      english_name: string;
+      iso_639_1: string;
+      name: string;
+    },
+    {
+      english_name: string;
+      iso_639_1: string;
+      name: string;
+    }
+  ];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
 export interface Trending extends IEntity {
   page: number;
   results: TrendingResult[];
   total_pages: number;
   total_results: number;
-}
-
-export interface TrendingResult extends IEntity {
-  title: string;
-  vote_average: number;
-  release_date: string;
-  poster_path: string;
 }

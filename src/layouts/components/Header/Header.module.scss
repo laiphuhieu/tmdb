@@ -23,7 +23,7 @@
 .container {
   display: flex;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -52,14 +52,6 @@
     &:hover .sub-nav {
       display: block;
       left: auto;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      height: 32px;
-      width: 260px;
-      display: block;
-      top: 40px;
     }
     .main-nav-link {
       color: $main-white;

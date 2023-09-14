@@ -8,7 +8,7 @@ const Popular = () => {
     return (
         <Layout>
             <Container>
-                <PopularBody title={"Popular Movies"}/>
+                <PopularBody title='Movies Popular'/>
             </Container>
         </Layout>
     )

@@ -1,5 +1,5 @@
 import axiosInstance from "./apiService";
-import { Trending } from "@/types/trending";
+import { Trending, TrendingResult } from "@/types/trending";
 
 const trendingService = {
   getTrendingDay(token: string): Promise<Trending> {
@@ -10,10 +10,12 @@ const trendingService = {
     return axiosInstance(token).get("/trending/movie/week?language=vi");
   },
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getTrendingDayById(token: string, id: any) {
+  getMoviesDetailById(
+    token: string,
+    id: string | undefined
+  ): Promise<TrendingResult | undefined> {
     return axiosInstance(token).get(
-      `/trending/movie/day/${id}?language=vi&append_to_response=videos`
+      `/movie/${id}?append_to_response=videos&language=vi-VI`
     );
   },
 };

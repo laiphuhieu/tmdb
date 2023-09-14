@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -13,8 +13,26 @@ import DropdownNotification from "../../../components/Dropdown/DropdownNotificat
 import DropdownProfile from "../../../components/Dropdown/DropdownProfile/DropdownProfile";
 import Search from "./Search";
 import { ReactComponent as SearchBtn } from "@/assets/images/searchBlue.svg";
+import searchService from "@/services/searchService";
+import { API_TOKEN } from "@/config/app.config";
+import { movieState } from "@/recoil/atom/movie";
+// import { isOpenedState } from "@/recoil/atom/isOpened";
+import { useRecoilState } from "recoil";
 
 const Header = () => {
+  const [movies, setMovies] = useRecoilState(movieState);
+  // const [isOpened, setIsOpened] = useRecoilState(isOpenedState);
+
+  const handleFetchData = useCallback(async () => {
+    // setIsOpened(true);
+    try {
+      const moviesData = await searchService.getSearchAll(API_TOKEN);
+      setMovies(moviesData.results);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [setMovies]);
+
   return (
     <header className={`${styles["header"]}`}>
       <div className={`${styles["container"]}`}>
@@ -101,22 +119,24 @@ const Header = () => {
                 </Tippy>
               </li>
 
-              <li className="ml-[30px]  flex">
+              <li className="ml-[30px] flex">
                 <Tippy
-                  content={<Search />}
+                  content={<Search moviesFetch={movies} />}
                   placement="bottom"
                   maxWidth="100%"
                   animation="fade"
                   arrow={false}
                   theme="light"
-                  trigger="click"
                   touch={true}
-                  appendTo="parent"
+                  trigger="click"
                   hideOnClick={true}
                   interactive={true}
                 >
                   <button aria-haspopup="true">
-                    <SearchBtn className="w-[29.11px] h-[29.11px]" />
+                    <SearchBtn
+                      className="w-[29.11px] h-[29.11px]"
+                      onClick={handleFetchData}
+                    />
                   </button>
                 </Tippy>
               </li>

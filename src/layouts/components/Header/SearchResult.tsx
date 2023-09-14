@@ -8,7 +8,9 @@ const SearchResult = (props: any): any => {
   const boxes = props.movies?.map((result: any, index: any) => {
     return <Box key={index} title={result.title} />;
   });
-  return <div>{boxes}</div>;
+  return (
+    <div className="overflow-y-scroll max-h-[400px] max-w-[100vw]">{boxes}</div>
+  );
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
