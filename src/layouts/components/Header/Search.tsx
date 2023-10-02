@@ -53,7 +53,13 @@ const Search = ({ moviesFetch }: any) => {
     setMovies([]);
     setSearch("");
     inputRef.current?.focus();
-    getTrendingMovies();
+    // getTrendingMovies();
+    const Data = setTimeout(() => {
+      getTrendingMovies();
+      return () => {
+        clearTimeout(Data);
+      };
+    }, 500);
   }, [setMovies, setSearch, inputRef, getTrendingMovies]);
 
   const changeSearch = useCallback(
@@ -72,12 +78,6 @@ const Search = ({ moviesFetch }: any) => {
 
   useEffect(() => {
     if (search) {
-      // const Data = setTimeout(() => {
-      //   getSearchedMovies();
-      // }, 500);
-      // return () => {
-      //   clearTimeout(Data);
-      // };
       getSearchedMovies();
     }
   }, [getSearchedMovies, setMovies, getTrendingMovies, search]);
