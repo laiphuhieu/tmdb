@@ -1,24 +1,22 @@
 import { IEntity } from "./common";
 
+export interface Trending extends IEntity {
+  page: number;
+  results: TrendingResult[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface Genre extends IEntity {
+  name: string;
+}
+
 export interface TrendingResult extends IEntity {
-  adult: false;
+  adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
-  budget: 104000000;
-  genres: [
-    {
-      id: number;
-      name: string;
-    },
-    {
-      id: number;
-      name: string;
-    },
-    {
-      id: number;
-      name: string;
-    }
-  ];
+  budget: number;
+  genres: Genre[];
   homepage: string;
   id: number;
   imdb_id: string;
@@ -30,18 +28,6 @@ export interface TrendingResult extends IEntity {
   production_companies: [
     {
       id: number;
-      logo_path: string;
-      name: string;
-      origin_country: string;
-    },
-    {
-      id: number;
-      logo_path: null;
-      name: string;
-      origin_country: string;
-    },
-    {
-      id: 128064;
       logo_path: string;
       name: string;
       origin_country: string;
@@ -61,16 +47,6 @@ export interface TrendingResult extends IEntity {
       english_name: string;
       iso_639_1: string;
       name: string;
-    },
-    {
-      english_name: string;
-      iso_639_1: string;
-      name: string;
-    },
-    {
-      english_name: string;
-      iso_639_1: string;
-      name: string;
     }
   ];
   status: string;
@@ -79,10 +55,4 @@ export interface TrendingResult extends IEntity {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
-export interface Trending extends IEntity {
-  page: number;
-  results: TrendingResult[];
-  total_pages: number;
-  total_results: number;
 }

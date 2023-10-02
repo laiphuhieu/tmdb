@@ -19,7 +19,6 @@ const TrendingWeek = () => {
       const trendingWeekData = await trendingService.getTrendingWeek(API_TOKEN);
       const trendingWeekDataResults = trendingWeekData.results;
       setTrendingWeek(trendingWeekDataResults);
-      console.log(trendingWeekDataResults)
     } catch (error) {
       console.log(error);
     }
