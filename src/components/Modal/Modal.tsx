@@ -4,9 +4,9 @@ import styles from "./Modal.module.scss";
 import Button from "../Button/Button";
 
 interface ModalProps {
-  children: React.ReactNode;
-  isShowing: boolean;
-  hide: () => void;
+  children?: React.ReactNode;
+  isShowing?: boolean;
+  hide?: () => void;
 }
 
 const Modal = ({ isShowing, hide, children }: ModalProps) => {

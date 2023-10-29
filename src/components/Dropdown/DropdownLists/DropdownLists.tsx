@@ -9,7 +9,7 @@ const DropdownLists = () => {
         <Link to="/movie/new">Add New Movie</Link>
       </p>
       <p className={`${styles["drop-list"]}`}>
-        <Link to="./tv/new">Add New TV Show</Link>
+        <Link to="/tv/new">Add New TV Show</Link>
       </p>
     </div>
   );

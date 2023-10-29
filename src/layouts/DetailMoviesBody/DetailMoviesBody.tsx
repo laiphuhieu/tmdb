@@ -121,10 +121,10 @@ const DetailMoviesBody = ({
                               {/* genres */}
                               <span className="pf-[20px] relative top-0 left-0 text-[14px] max-w-[414px] leading-tight">
                                 {genre &&
-                                  genre.map((res, idx) => {
+                                  genre.map((res) => {
                                     return (
                                       <a
-                                        key={idx}
+                                        key={res.id}
                                         href="#"
                                         className="hover:text-[#ffffffb3]"
                                       >
@@ -253,31 +253,26 @@ const DetailMoviesBody = ({
                               {/* profile */}
 
                               {jobByCrewData &&
-                                jobByCrewData.map(
-                                  (
-                                    res: CrewResult,
-                                    idx: React.Key | null | undefined
-                                  ) => {
-                                    return (
-                                      <li
-                                        key={idx}
-                                        className="h-auto - mb-0 w-[33%] basis-[33%] text-left pr-[20px] box-border min-w-[14px] "
-                                      >
-                                        <p className="text-white pt-[20px]">
-                                          <Link
-                                            to={`/person/${res.id}`}
-                                            className="hover:text-[#ffffffb3]"
-                                          >
-                                            {res.name}
-                                          </Link>
-                                        </p>
-                                        <p className="text-[12.6px] text-white">
-                                          {res.job}
-                                        </p>
-                                      </li>
-                                    );
-                                  }
-                                )}
+                                jobByCrewData.map((res: CrewResult) => {
+                                  return (
+                                    <li
+                                      key={res.id}
+                                      className="h-auto - mb-0 w-[33%] basis-[33%] text-left pr-[20px] box-border min-w-[14px] "
+                                    >
+                                      <p className="text-white pt-[20px]">
+                                        <Link
+                                          to={`/person/${res.id}`}
+                                          className="hover:text-[#ffffffb3]"
+                                        >
+                                          {res.name}
+                                        </Link>
+                                      </p>
+                                      <p className="text-[12.6px] text-white">
+                                        {res.job}
+                                      </p>
+                                    </li>
+                                  );
+                                })}
                             </ol>
                           </div>
                         </section>
