@@ -3,10 +3,10 @@ import React, { useMemo } from "react";
 import styles from "./Tooltip.module.scss";
 
 interface TooltipProps {
-  children: React.ReactNode;
-  title: string;
-  position: "top" | "right" | "bottom" | "left";
-  theme: "dark" | "light";
+  children?: React.ReactNode;
+  title?: string;
+  position?: "top" | "right" | "bottom" | "left";
+  theme?: "dark" | "light";
 }
 
 const Tooltip = ({ children, title, position, theme }: TooltipProps) => {

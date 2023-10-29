@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ReactComponent as SearchBtn } from "@/assets/images/search.svg";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SearchResult = (props: any): any => {
@@ -24,9 +25,13 @@ const Box = (props: any) => {
               <SearchBtn className="w-[20px] h-[20px] mr-[6px]" />
             </div>
             <p>
-              <span title={props.title} className="text-black">
+              <Link
+                to={`/person/id`}
+                title={props.title}
+                className="text-black"
+              >
                 {props.title}
-              </span>
+              </Link>
             </p>
           </div>
         </div>
