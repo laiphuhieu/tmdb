@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const SearchResult = (props: any): any => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxes = props.movies?.map((result: any, index: any) => {
-    return <Box key={index} title={result.title} />;
+    return <Box key={index} title={result.title} id={result.id} />;
   });
   return (
     <div className="overflow-y-scroll max-h-[400px] max-w-[100vw]">{boxes}</div>
@@ -17,7 +17,7 @@ const SearchResult = (props: any): any => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Box = (props: any) => {
   return (
-    <ul>
+    <ul className="hover:bg-[#f8f9fa] hover:cursor-pointer">
       <li className="text-[18px]">
         <div className="flex w-[100%] justify-center pt-[4px] pb-[5px] border-solid border-grey border-b-[1px]">
           <div className="flex w-[100%] items-center text[16.2px] px-[40px]">
@@ -26,7 +26,7 @@ const Box = (props: any) => {
             </div>
             <p>
               <Link
-                to={`/person/id`}
+                to={`/movie/${props.id}`}
                 title={props.title}
                 className="text-black"
               >

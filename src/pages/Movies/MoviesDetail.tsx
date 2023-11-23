@@ -106,7 +106,9 @@ const MoviesDetail = () => {
       );
 
       const filteredByJobGroup = groupBy(jobsByCrew, ({ name }) => name);
+      console.log(filteredByJobGroup);
       const valuesByJob = Object.values(filteredByJobGroup);
+      console.log(valuesByJob);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const filteredByJob: any = [];
@@ -128,6 +130,7 @@ const MoviesDetail = () => {
         });
       });
 
+      console.log(filteredByJob);
       return filteredByJob;
     }
 

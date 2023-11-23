@@ -97,7 +97,7 @@ const PeoplePage = () => {
         // }
       });
 
-      console.log(finalObj);
+      // console.log(finalObj);
       return finalObj;
     }
 

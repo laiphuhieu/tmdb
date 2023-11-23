@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 interface Image {
   src: string;
-  alt: string;
+  alt?: string;
   className?: string;
-  fallback: string;
+  fallback?: string;
 }
 
 const images = {
