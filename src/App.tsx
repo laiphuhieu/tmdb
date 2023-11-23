@@ -7,7 +7,7 @@ import AppRoutes from "./routes";
 function App() {
   return (
     <RecoilRoot>
-      <AppRoutes />;
+      <AppRoutes />
     </RecoilRoot>
   );
 }
