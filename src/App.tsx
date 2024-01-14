@@ -1,14 +1,14 @@
 import React from "react";
 
-import { RecoilRoot } from "recoil";
-
 import AppRoutes from "./routes";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   return (
-    <RecoilRoot>
+    <Provider store={store}>
       <AppRoutes />
-    </RecoilRoot>
+    </Provider>
   );
 }
 

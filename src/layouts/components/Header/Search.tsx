@@ -1,7 +1,5 @@
 import React, { useCallback, ChangeEvent, useEffect, useState } from "react";
 
-import { useRecoilState } from "recoil";
-
 import { DebounceInput } from "react-debounce-input";
 
 import { API_TOKEN } from "@/config/app.config";
@@ -11,17 +9,19 @@ import { ReactComponent as CloseBtn } from "@/assets/images/closeBtn.svg";
 import { ReactComponent as Loading } from "@/assets/images/loading.svg";
 import searchService from "@/services/searchService";
 import SearchResult from "./SearchResult";
-import { searchState } from "@/recoil/atom/search";
-import { movieState } from "@/recoil/atom/movie";
 import useAutoFocus from "@/custom-hooks/useAutoFocus";
+import { useAppDispatch, useAppSelector } from "@/custom-hooks/useApp";
+import { setMovies } from "@/redux/slice.ts/movieSlice";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Search = ({ moviesFetch }: any) => {
-  const [movies, setMovies] = useRecoilState(movieState);
-  const [search, setSearch] = useRecoilState(searchState);
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const inputRef = useAutoFocus();
+
+  const dispatch = useAppDispatch();
+  const movies = useAppSelector((state) => state.movies.movie);
 
   const getSearchedMovies = useCallback(async () => {
     try {
@@ -31,23 +31,23 @@ const Search = ({ moviesFetch }: any) => {
         search
       );
 
-      setMovies(getSearchedMoviesData.results);
+      dispatch(setMovies(getSearchedMoviesData.results));
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
-  }, [search, setMovies]);
+  }, [search, dispatch]);
 
   const getTrendingMovies = useCallback(async () => {
     try {
       setIsLoading(true);
       const moviesData = await searchService.getSearchAll(API_TOKEN);
-      setMovies(moviesData.results);
+      dispatch(setMovies(moviesData.results));
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
-  }, [setMovies]);
+  }, [dispatch]);
 
   const handleClear = useCallback(() => {
     setMovies([]);
@@ -60,7 +60,7 @@ const Search = ({ moviesFetch }: any) => {
         clearTimeout(Data);
       };
     }, 500);
-  }, [setMovies, setSearch, inputRef, getTrendingMovies]);
+  }, [setSearch, inputRef, getTrendingMovies]);
 
   const changeSearch = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +80,7 @@ const Search = ({ moviesFetch }: any) => {
     if (search) {
       getSearchedMovies();
     }
-  }, [getSearchedMovies, setMovies, getTrendingMovies, search]);
+  }, [getSearchedMovies, getTrendingMovies, search]);
 
   return (
     <div>

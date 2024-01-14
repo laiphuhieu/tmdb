@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import styles from "./TrailersFilter.module.scss";
-import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
+// import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
 import trailerService from "@/services/trailerService";
 import { API_TOKEN } from "@/config/app.config";
 import { TrailerResult } from "@/types/trailer";
@@ -91,7 +91,7 @@ const TrailersFilterOnTv = () => {
                 </div>
 
                 <Tippy
-                  content={<DropdownMore />}
+                  // content={<DropdownMore />}
                   placement="bottom"
                   animation="fade"
                   theme="light"

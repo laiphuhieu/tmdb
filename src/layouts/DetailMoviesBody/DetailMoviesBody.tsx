@@ -91,11 +91,22 @@ const DetailMoviesBody = ({
                         <div className="min-w-[300px] w-[300px] h-[450px] overflow-hidden rounded-[8px]">
                           <div className={`${styles["poster"]}`}>
                             <div className="w-full h-full min-w-full">
-                              <img
-                                src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${movieData.poster_path}`}
-                                alt={`${movieData.title}`}
-                                className="block w-full min-w-full h-full min-h-full border-0 out"
-                              />
+                              {movieData.poster_path ? (
+                                <>
+                                  <Image
+                                    src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${movieData.poster_path}`}
+                                    alt={`${movieData.title}`}
+                                    className="block w-full min-w-full h-full min-h-full border-0 out"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <Image
+                                    className="bg-[#dbdbdb] h-full"
+                                    src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                                  />
+                                </>
+                              )}
                             </div>
                             <div className={`${styles["zoom"]}`}>
                               <a
@@ -120,7 +131,7 @@ const DetailMoviesBody = ({
                                 </a>
                                 <span className="opacity-80 font-normal">
                                   {" "}
-                                  (2023)
+                                  ({movieData.release_date.slice(0, 4)})
                                 </span>
                               </h2>
                               <div className="flex">

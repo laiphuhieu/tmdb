@@ -88,6 +88,8 @@
 
 .nav-area-right {
   color: $main-white;
+  display: flex;
+  align-items: center;
   .button-container {
     display: flex;
     align-items: center;

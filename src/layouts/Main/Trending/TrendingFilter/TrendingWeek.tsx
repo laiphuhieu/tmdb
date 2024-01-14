@@ -1,28 +1,33 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
+import { API_TOKEN } from "@/config/app.config";
+import trendingService from "@/services/trendingService";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
+// import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
 import styles from "./TrendingFilter.module.scss";
-import trendingService from "@/services/trendingService";
 import { TrendingResult } from "@/types/trending";
-import { API_TOKEN } from "@/config/app.config";
 
+import { useAppDispatch, useAppSelector } from "@/custom-hooks/useApp";
+import { setTrendingWeek } from "@/redux/slice.ts/trendingWeekSlice";
 const TrendingWeek = () => {
-  const [trendingWeek, setTrendingWeek] = useState<TrendingResult[]>([]);
+  const dispatch = useAppDispatch();
+  const trendingWeek = useAppSelector(
+    (state) => state.trendingWeek.trendingWeekMovie
+  );
 
   const getTrendingWeekData = useCallback(async () => {
     try {
       const trendingWeekData = await trendingService.getTrendingWeek(API_TOKEN);
       const trendingWeekDataResults = trendingWeekData.results;
-      setTrendingWeek(trendingWeekDataResults);
+      dispatch(setTrendingWeek(trendingWeekDataResults));
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     getTrendingWeekData();
@@ -52,7 +57,7 @@ const TrendingWeek = () => {
                       </Link>
                     </div>
                     <Tippy
-                      content={<DropdownMore />}
+                      // content={<DropdownMore />}
                       placement="bottom"
                       animation="fade"
                       theme="light"

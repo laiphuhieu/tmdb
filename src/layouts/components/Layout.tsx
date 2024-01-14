@@ -1,20 +1,25 @@
-import React from 'react'
+import React from "react";
 
-import Header from './Header/Header'
-import Footer from './Footer/Footer'
+import HeaderLoggedIn from "./Header/HeaderLoggedIn";
+import HeaderLoggedOut from "./Header/HeaderLoggedOut";
+import Footer from "./Footer/Footer";
+
+import { useAppSelector } from "@/custom-hooks/useApp";
 
 interface LayoutProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const Layout = ({children}:LayoutProps) => {
-    return (
-        <div className='w-full'>
-            <Header />
-            {children}
-            <Footer />
-        </div>
-    )
-}
+const Layout = ({ children }: LayoutProps) => {
+  const isLoggedIn = useAppSelector((state) => state.auth.isAuthenticated);
 
-export default Layout
+  return (
+    <div className="w-full">
+      {isLoggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />}
+      {children}
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;

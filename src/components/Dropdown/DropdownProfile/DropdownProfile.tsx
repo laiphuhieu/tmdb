@@ -2,8 +2,10 @@ import React from "react";
 
 import styles from "./DropdownProfile.module.scss";
 import { Link } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
-const DropdownProfile = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const DropdownProfile = ({ handleLogOut }: any) => {
   return (
     <div className={`${styles["setting-container"]}`}>
       <div className={`${styles["group"]}`}>
@@ -19,7 +21,7 @@ const DropdownProfile = () => {
           <Link to="/user/laiphuhieu/discussions">Thảo luận</Link>
         </p>
         <p>
-          <Link to="/user/laiphuhieu/lists">Danh sách</Link>
+          <Link to="/watchlist">Danh sách</Link>
         </p>
         <p>
           <Link to="/user/laiphuhieu/ratings">Xếp hạng</Link>
@@ -38,8 +40,9 @@ const DropdownProfile = () => {
       </div>
       <div className={`${styles["group"]}`}>
         <p>
-          <Link to="/logout">Đăng xuất</Link>
+          <button onClick={handleLogOut}>Đăng xuất</button>
         </p>
+        <div></div>
       </div>
     </div>
   );
