@@ -5,6 +5,7 @@
   color: $main-black;
   border: 1px solid rgba(33, 37, 41, 0.15);
   width: 130px;
+  cursor: pointer;
   .more-container {
     .group {
       border-top: 1px solid rgba(33, 37, 41, 0.15);
@@ -13,9 +14,15 @@
     .no-border {
       border: none;
     }
+    .active {
+      background-color: green;
+      .list {
+        color: #fff;
+      }
+    }
 
     .more-content {
-      padding: 6px 20px;
+      padding: 6px 18px;
       font-size: $font-xs;
       align-items: center;
       display: flex;
@@ -27,6 +34,7 @@
         display: inline-flex;
         align-items: center;
         background-color: transparent;
+        
         .list-btn {
           background-image: url("../../../assets/images/list.svg");
           background-position: center center;
@@ -34,6 +42,7 @@
           margin-right: 4px;
           width: 17.27px;
           height: 17.27px;
+         
         }
         .heart-btn {
           background-image: url("../../../assets/images/heart.svg");
@@ -42,6 +51,9 @@
           margin-right: 4px;
           width: 17.27px;
           height: 17.27px;
+          &.heart-btn-clicked {
+            filter: invert(51%) sepia(41%) saturate(2511%) hue-rotate(289deg) brightness(92%) contrast(87%) !important;
+          }
         }
         .bookmark-btn {
           background-image: url("../../../assets/images/bookmark.svg");
@@ -50,6 +62,9 @@
           margin-right: 4px;
           width: 17.27px;
           height: 17.27px;
+          &.bookmark-btn-clicked {
+            filter: invert(32%) sepia(50%) saturate(1353%) hue-rotate(324deg) brightness(92%) contrast(97%);;
+          }
         }
         .rating-btn {
           background-image: url("../../../assets/images/rating.svg");

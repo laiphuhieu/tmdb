@@ -1,37 +1,68 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
+import { auth } from "@/firebase/firebase";
+import { toast } from "react-toastify";
 
 import styles from "./Header.module.scss";
 import Navbar from "./Navbar";
 import { ReactComponent as Logo } from "@/assets/images/logo.svg";
 import { PlusIcon, Notification } from "../../../components/icons/icons";
+import { ReactComponent as SearchBtn } from "@/assets/images/searchBlue.svg";
 import DropdownLists from "../../../components/Dropdown/DropdownLists/DropdownLists";
 import DropdownNotification from "../../../components/Dropdown/DropdownNotification/DropdownNotification";
 import DropdownProfile from "../../../components/Dropdown/DropdownProfile/DropdownProfile";
 import Search from "./Search";
-import { ReactComponent as SearchBtn } from "@/assets/images/searchBlue.svg";
 import searchService from "@/services/searchService";
 import { API_TOKEN } from "@/config/app.config";
-import { movieState } from "@/recoil/atom/movie";
-// import { isOpenedState } from "@/recoil/atom/isOpened";
-import { useRecoilState } from "recoil";
+import { useAppDispatch, useAppSelector } from "@/custom-hooks/useApp";
+import { setMovies } from "@/redux/slice.ts/movieSlice";
+import ConfirmModal from "@/components/ModalConfirm/ModalConfirm";
 
-const Header = () => {
-  const [movies, setMovies] = useRecoilState(movieState);
-  // const [isOpened, setIsOpened] = useRecoilState(isOpenedState);
+const HeaderLoggedIn = () => {
+  const dispatch = useAppDispatch();
+  const movies = useAppSelector((state) => state.movies.movie);
 
-  const handleFetchData = useCallback(async () => {
-    // setIsOpened(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogOut = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const navigate = useNavigate();
+
+  const handleConfirmSignOut = useCallback(async () => {
     try {
-      const moviesData = await searchService.getSearchAll(API_TOKEN);
-      setMovies(moviesData.results);
+      await auth.signOut();
+      localStorage.removeItem("watchList");
+      navigate(0);
+
+      toast.success("Logged out successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+      });
     } catch (error) {
       console.log(error);
     }
-  }, [setMovies]);
+    setIsOpen(false);
+  }, [navigate]);
+
+  const handleCancel = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const handleFetchData = useCallback(async () => {
+    try {
+      const moviesData = await searchService.getSearchAll(API_TOKEN);
+      dispatch(setMovies(moviesData.results));
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch]);
 
   return (
     <header className={`${styles["header"]}`}>
@@ -98,13 +129,13 @@ const Header = () => {
                   className={`${styles["profile-tooltip"]}`}
                 >
                   <Tippy
-                    content={<DropdownProfile />}
+                    content={<DropdownProfile handleLogOut={handleLogOut} />}
                     placement="bottom"
                     animation="fade"
                     arrow={true}
                     theme="light"
-                    trigger="focusin"
-                    touch={true}
+                    hideOnClick={true}
+                    trigger="click"
                     appendTo="parent"
                     interactive={true}
                   >
@@ -141,10 +172,15 @@ const Header = () => {
                 </Tippy>
               </li>
             </ul>
+            <ConfirmModal
+              isOpen={isOpen}
+              onConfirm={handleConfirmSignOut}
+              onCancel={handleCancel}
+            />
           </div>
         </div>
       </div>
     </header>
   );
 };
-export default Header;
+export default HeaderLoggedIn;

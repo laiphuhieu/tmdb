@@ -5,7 +5,7 @@ import Tippy from "@tippyjs/react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
+// import DropdownMore from "@/components/Dropdown/DropdownMore/DropdownMore";
 import styles from "./PopularFilter.module.scss";
 import popularService from "@/services/popularService";
 import { API_TOKEN } from "@/config/app.config";
@@ -48,7 +48,7 @@ const PopularOnTv = () => {
                   </Link>
                 </div>
                 <Tippy
-                  content={<DropdownMore />}
+                  // content={<DropdownMore />}
                   placement="bottom"
                   animation="fade"
                   theme="light"

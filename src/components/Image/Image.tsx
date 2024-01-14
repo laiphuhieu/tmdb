@@ -5,6 +5,7 @@ interface Image {
   alt?: string;
   className?: string;
   fallback?: string;
+  loading?: string;
 }
 
 const images = {
@@ -31,6 +32,7 @@ const Image = ({
       alt={alt}
       {...props}
       onError={handleErrorImg}
+      loading="lazy"
     />
   );
 };
