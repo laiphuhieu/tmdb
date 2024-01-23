@@ -79,7 +79,7 @@ const SignInPage = () => {
   return (
     <div className="mt-[64px]">
       <section>
-        <div className="py-[30px]  ">
+        <div className="py-[30px]  h-[calc(100vh-64px-327px)]">
           <div className="w-full">
             <h2 className="mb-[4px] text-[24px]">Login to your account</h2>
             <p className="text-[16px] mb-[16px] text-black">
