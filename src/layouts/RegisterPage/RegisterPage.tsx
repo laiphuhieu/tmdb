@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 
 import { ReactComponent as CheckIcon } from "@/assets/images/check.svg";
+import { ReactComponent as CautionIcon } from "@/assets/images/caution.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
@@ -8,9 +9,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
-import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import { ReactComponent as CautionIcon } from "@/assets/images/caution.svg";
 import { useAppDispatch } from "@/custom-hooks/useApp";
 import { setError } from "@/redux/slice.ts/errorSlice";
 
@@ -106,13 +105,12 @@ const RegisterPage = () => {
 
   return (
     <div className="mt-[64px]">
-      <div className="py-[30px] h-[calc(100vh-64px-327px)]">
+      <div className="py-[30px] ">
         <div className="my-[20px]">
           <div className="w-full flex items-center justify-center">
             <div className="max-w-[1400px] w-full px-[40px]">
               <div className="flex items-start w-full">
                 <div className="min-w-[260px] w-[260px] border-[1px] border-solid border-[#e3e3e3] rounded-[8px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-                  <div></div>
                   <h3 className="flex items-center justify-between p-[20px] text-white text-[19.2px] bg-[#01b4e4]">
                     Benefits of being a member
                   </h3>
@@ -189,7 +187,7 @@ const RegisterPage = () => {
                               </h2>
                             </div>
                             <div className="p-[20px]">
-                              <ul className="ml-[20px] list-disc leading-[22.4px]">
+                              <ul className="list-none leading-[22.4px]">
                                 <li>{isError}</li>
                               </ul>
                             </div>

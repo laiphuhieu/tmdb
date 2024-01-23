@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { ReactComponent as CautionIcon } from "@/assets/images/caution.svg";
 import { useAppDispatch, useAppSelector } from "@/custom-hooks/useApp";
@@ -49,11 +47,6 @@ const SignInPage = () => {
         setPassword("");
         if (userCredential.user.emailVerified) {
           navigate("/");
-          toast.success("Logged in successfully!"),
-            {
-              position: toast.POSITION.TOP_RIGHT,
-              autoClose: 3000,
-            };
         } else {
           dispatch(
             setError(
@@ -85,125 +78,104 @@ const SignInPage = () => {
 
   return (
     <div className="mt-[64px]">
-      <div className="py-[30px]  h-[calc(100vh-64px-327px)]">
-        <div className="w-full">
-          <h2 className="mb-[4px] text-[24px]">Login to your account</h2>
-          <p className="text-[16px] mb-[16px] text-black">
-            In order to use the editing and rating capabilities of TMDB, as well
-            as get personal recommendations you will need to login to your
-            account. If you do not have an account, registering for an account
-            is free and simple.{" "}
-            <a
-              href="/register"
-              className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
-            >
-              Click here
-            </a>{" "}
-            to get started.
-          </p>
-          <p className="text-[16px] mb-[16px] text-black">
-            If you signed up but didn&apos;t get your verification email,{" "}
-            <a
-              href=""
-              className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
-            >
-              Click here
-            </a>{" "}
-            to have it resent.
-          </p>
-
-          {combinedErrors?.length > 0 && (
-            <>
-              <div className="mt-[30px] border-[1px] border-solid border-[#e3e3e3] rounded-[8px] mb-[30px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-                <div>
-                  <div>
-                    <h2 className="bg-[#d40242] justify-between p-[20px] text-[19.2px] leading-[23px] text-white">
-                      <span className="flex items-center font-thin ">
-                        <CautionIcon />
-                        &nbsp; There was a problem
-                      </span>
-                    </h2>
-                  </div>
-                  <div className="p-[20px]">
-                    <ul className="ml-[20px] list-disc leading-[22.4px]">
-                      {combinedErrors?.map((err, idx) => (
-                        <li key={idx}>{err}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* {error && (
-            <>
-              <div className="mt-[30px] border-[1px] border-solid border-[#e3e3e3] rounded-[8px] mb-[30px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-                <div>
-                  <div>
-                    <h2 className="bg-[#d40242] justify-between p-[20px] text-[19.2px] leading-[23px] text-white">
-                      <span className="flex items-center font-thin ">
-                        <CautionIcon />
-                        &nbsp; There was a problem
-                      </span>
-                    </h2>
-                  </div>
-                  <div className="p-[20px]">
-                    <ul className="ml-[20px] list-disc leading-[22.4px]">
-                      <li>{error}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </>
-          )} */}
-
-          <form onSubmit={handleSignIn}>
-            <fieldset>
-              <div className="mt-[16px]">
-                <label htmlFor="username">
-                  <span className="text-[#212529]">Username </span>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="rounder-[4px] py-[6px] px-[12px] w-full border-[1px] border-solid border-[#CED4DA] outline-none"
-                  />
-                </label>
-              </div>
-              <div className="mt-[16px]">
-                <label htmlFor="password">
-                  <span className="text-[#212529]">Password</span>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="rounder-[4px] py-[6px] px-[12px] w-full border-[1px] border-solid border-[#CED4DA] outline-none"
-                  />
-                </label>
-              </div>
-            </fieldset>
-
-            <div className="flex items-center mt-[30px]">
-              <button
-                type="submit"
-                className="border[#01b4e4] rounded-[8px] text-white !bg-[#01b4e4] cursor-pointer py-[6px] px-[20px] hover:!bg-[#032541] transition-colors duration-200 ease-in-out"
+      <section>
+        <div className="py-[30px]  ">
+          <div className="w-full">
+            <h2 className="mb-[4px] text-[24px]">Login to your account</h2>
+            <p className="text-[16px] mb-[16px] text-black">
+              In order to use the editing and rating capabilities of TMDB, as
+              well as get personal recommendations you will need to login to
+              your account. If you do not have an account, registering for an
+              account is free and simple.{" "}
+              <Link
+                to="/register"
+                className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
               >
-                Đăng nhập
-              </button>
-              <p className="ml-[10px] ">
-                <Link
-                  to="/reset-password"
-                  className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
+                Click here
+              </Link>{" "}
+              to get started.
+            </p>
+            <p className="text-[16px] mb-[16px] text-black">
+              If you signed up but didn&apos;t get your verification email,{" "}
+              <Link
+                to="resend-email-verification"
+                className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
+              >
+                Click here
+              </Link>{" "}
+              to have it resent.
+            </p>
+
+            {combinedErrors?.length > 0 && (
+              <>
+                <div className="mt-[30px] border-[1px] border-solid border-[#e3e3e3] rounded-[8px] mb-[30px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
+                  <div>
+                    <div>
+                      <h2 className="bg-[#d40242] justify-between p-[20px] text-[19.2px] leading-[23px] text-white">
+                        <span className="flex items-center font-thin ">
+                          <CautionIcon />
+                          &nbsp; There was a problem
+                        </span>
+                      </h2>
+                    </div>
+                    <div className="p-[20px]">
+                      <ul className="list-none leading-[22.4px]">
+                        {combinedErrors?.map((err, idx) => (
+                          <li key={idx}>{err}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <form onSubmit={handleSignIn}>
+              <fieldset>
+                <div className="mt-[16px]">
+                  <label htmlFor="username">
+                    <span className="text-[#212529]">Username</span>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="rounder-[4px] py-[6px] px-[12px] w-full border-[1px] border-solid border-[#CED4DA] outline-none"
+                    />
+                  </label>
+                </div>
+                <div className="mt-[16px]">
+                  <label htmlFor="password">
+                    <span className="text-[#212529]">Password</span>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="rounder-[4px] py-[6px] px-[12px] w-full border-[1px] border-solid border-[#CED4DA] outline-none"
+                    />
+                  </label>
+                </div>
+              </fieldset>
+
+              <div className="flex items-center mt-[30px]">
+                <button
+                  type="submit"
+                  className="border[#01b4e4] rounded-[8px] text-white !bg-[#01b4e4] cursor-pointer py-[6px] px-[20px] hover:!bg-[#032541] transition-colors duration-200 ease-in-out"
                 >
-                  Reset password
-                </Link>
-              </p>
-              <ToastContainer />
-            </div>
-          </form>
+                  Đăng nhập
+                </button>
+                <p className="ml-[10px] ">
+                  <Link
+                    to="/reset-password"
+                    className="text-[#01b4e4] hover:border-b-[1px] hover:border-b-solid hover:border-b-[#01b4e4]"
+                  >
+                    Reset password
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

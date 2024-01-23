@@ -7,6 +7,7 @@ import watchListReducer from "./slice.ts/watchListSlice";
 import progressReducer from "./slice.ts/progressSlice";
 import authReducer from "./slice.ts/authSlice";
 import errorReducer from "./slice.ts/errorSlice";
+import flashReducer from "./slice.ts/flashSlice";
 
 const rootReducer = {
   trendingDay: trendingDayReducer,
@@ -16,6 +17,7 @@ const rootReducer = {
   progress: progressReducer,
   auth: authReducer,
   error: errorReducer,
+  flash: flashReducer,
 };
 
 export const store = configureStore({

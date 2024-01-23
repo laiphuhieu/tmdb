@@ -131,7 +131,11 @@ const DetailMoviesBody = ({
                                 </a>
                                 <span className="opacity-80 font-normal">
                                   {" "}
-                                  ({movieData.release_date.slice(0, 4)})
+                                  {movieData.release_date ? (
+                                    <>({movieData.release_date.slice(0, 4)})</>
+                                  ) : (
+                                    ""
+                                  )}
                                 </span>
                               </h2>
                               <div className="flex">
@@ -174,9 +178,20 @@ const DetailMoviesBody = ({
                                     value={
                                       Math.round(movieData.vote_average) * 10
                                     }
-                                    text="70%"
                                     className="bg-[#032541] rounded-[50%] text-white font-bold"
-                                  />
+                                  >
+                                    <span className="">
+                                      <span className="text-white text-[25px] font-extrabold">
+                                        {Math.round(movieData.vote_average) *
+                                          10}
+                                      </span>
+                                      <span className="relative top-[-6px]">
+                                        <sup className="text-[9px] text-white ">
+                                          %
+                                        </sup>
+                                      </span>
+                                    </span>
+                                  </CircularProgressbarWithChildren>
                                 </div>
                                 <div className="font-bold ml-[6px] whitespace-pre-line leading-tight text-[14px]">
                                   User
@@ -369,7 +384,7 @@ const DetailMoviesBody = ({
                                 <li className="ml-[10px] bg-transparent	flex items-center min-w-[140px] w-[140px]">
                                   <p className="px-[10px] flex items-center ">
                                     <a
-                                      href="#"
+                                      href=""
                                       className="flex items-center font-bold text-black hover:text-[#00000080]"
                                     >
                                       View More
@@ -380,16 +395,16 @@ const DetailMoviesBody = ({
                                   </p>
                                 </li>
                               </ol>
+                              {/* button */}
+                              <p className="mt-[20px] text-[14px]">
+                                <Link
+                                  to={``}
+                                  className="font-semibold text-[15.4px] text-black hover:text-[#00000080]"
+                                >
+                                  Full Cast & Crew
+                                </Link>
+                              </p>
                             </div>
-                            {/* button */}
-                            <p className="mt-[20px] text-[14px]">
-                              <a
-                                href="#"
-                                className="font-semibold text-[15.4px] text-black hover:text-[#00000080]"
-                              >
-                                Full Cast & Crew
-                              </a>
-                            </p>
                           </section>
 
                           {/* section2 */}

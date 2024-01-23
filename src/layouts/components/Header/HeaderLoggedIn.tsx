@@ -6,7 +6,6 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import { auth } from "@/firebase/firebase";
-import { toast } from "react-toastify";
 
 import styles from "./Header.module.scss";
 import Navbar from "./Navbar";
@@ -40,11 +39,6 @@ const HeaderLoggedIn = () => {
       await auth.signOut();
       localStorage.removeItem("watchList");
       navigate(0);
-
-      toast.success("Logged out successfully", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 3000,
-      });
     } catch (error) {
       console.log(error);
     }

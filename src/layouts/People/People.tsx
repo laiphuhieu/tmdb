@@ -23,18 +23,18 @@ interface peopleProps {
   peopleData: CastPeopleResult | undefined;
   castCredit: CastCredit[] | undefined;
   crewCredit: CrewCredit[] | undefined;
-  YearByCast: CastCredit[] | undefined;
+  yearByCast: CastCredit[] | undefined;
 }
 
 const PeoplePage = ({
   peopleData,
   castCredit,
   crewCredit,
-  YearByCast,
+  yearByCast,
 }: peopleProps) => {
   return (
     <div className="mt-[64px]">
-      {peopleData && castCredit && crewCredit && YearByCast && (
+      {peopleData && castCredit && crewCredit && yearByCast && (
         <>
           <HelmetProvider content={helmetContext}>
             <Helmet>
@@ -243,10 +243,16 @@ const PeoplePage = ({
                                         >
                                           <div className="w-[130px] h-[195px]">
                                             <a href={`/movie/${res.id}`}>
-                                              <Image
-                                                alt={res.title}
-                                                src={`https://www.themoviedb.org/t/p/w150_and_h225_bestv2/${res.poster_path}`}
-                                              />
+                                              {res.poster_path ? (
+                                                <>
+                                                  <Image
+                                                    alt={res.title}
+                                                    src={`https://www.themoviedb.org/t/p/w150_and_h225_bestv2/${res.poster_path}`}
+                                                  />
+                                                </>
+                                              ) : (
+                                                ""
+                                              )}
                                             </a>
                                           </div>
                                           <p>

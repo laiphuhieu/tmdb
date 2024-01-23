@@ -107,31 +107,20 @@ const MoviesDetail = () => {
 
       const filteredByJobGroup = groupBy(jobsByCrew, ({ name }) => name);
       console.log(filteredByJobGroup);
-      const valuesByJob = Object.values(filteredByJobGroup);
-      console.log(valuesByJob);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const filteredByJob: any = [];
-
-      valuesByJob.forEach((value) => {
-        value.forEach((x) => {
-          let find;
-          if (
-            (find = filteredByJob.find(
-              (y: { name: string }) => y.name === x.name
-            ))
-          ) {
-            find.job = Array.isArray(find.job)
-              ? [...find.job, x.job].join(", ").toString()
-              : [find.job, x.job].join(", ").toString();
-          } else {
-            filteredByJob.push(x);
-          }
-        });
+      const combinedJobs: any[] | undefined = [];
+      Object.values(filteredByJobGroup).forEach((group) => {
+        const combinedPerson = {
+          id: group[0].id,
+          name: group[0].name,
+          job: group.map((person) => person.job).join(", "),
+        };
+        combinedJobs.push(combinedPerson);
       });
 
-      console.log(filteredByJob);
-      return filteredByJob;
+      console.log(combinedJobs);
+      return combinedJobs;
     }
 
     return undefined;

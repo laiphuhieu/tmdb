@@ -8,7 +8,6 @@ import Layout from "@/layouts/components/Layout";
 import People from "@/layouts/People/People";
 import { CastPeopleResult } from "@/types/people";
 import { CombinedCredits } from "@/types/people";
-// import { groupBy } from "lodash";
 
 const PeoplePage = () => {
   const { personId } = useParams();
@@ -50,7 +49,7 @@ const PeoplePage = () => {
     getCombinedCredits();
   }, [getPeopleData, getCombinedCredits]);
 
-  const CastCredit = useMemo(() => {
+  const castCredit = useMemo(() => {
     if (combinedCredits)
       return combinedCredits.cast.sort((a, b) =>
         a.release_date > b.release_date ? -1 : 1
@@ -59,7 +58,7 @@ const PeoplePage = () => {
     return undefined;
   }, [combinedCredits]);
 
-  const CrewCredit = useMemo(() => {
+  const crewCredit = useMemo(() => {
     if (combinedCredits) return combinedCredits.crew;
 
     return undefined;
@@ -78,26 +77,14 @@ const PeoplePage = () => {
         const firstAirDate = values.first_air_date?.slice(0, 4);
 
         if (date) {
-          // if (date !== "") {
-          //   finalObj[date] = [values];
-          // } else {
-          //   finalObj[date].push(values);
-          // }
           date !== ""
             ? (finalObj[date] = [values])
             : finalObj[date].push(values);
         } else {
           finalObj[firstAirDate] = [values];
         }
-
-        // if (finalObj[date] !== undefined) {
-        //   finalObj[date].push(values);
-        // } else {
-        //   finalObj[date] = [values];
-        // }
       });
 
-      // console.log(finalObj);
       return finalObj;
     }
 
@@ -108,9 +95,9 @@ const PeoplePage = () => {
     <Layout>
       <People
         peopleData={people}
-        castCredit={CastCredit}
-        crewCredit={CrewCredit}
-        YearByCast={groupByCastData}
+        castCredit={castCredit}
+        crewCredit={crewCredit}
+        yearByCast={groupByCastData}
       />
     </Layout>
   );
