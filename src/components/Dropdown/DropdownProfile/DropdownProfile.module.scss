@@ -1,0 +1,28 @@
+@import "@/assets/styles/referent.scss";
+
+.group:first-child {
+  padding: 16px 0;
+  h2 {
+    padding: 0 20px;
+  }
+  p {
+    padding: 0 20px;
+  }
+}
+
+.group:nth-child(2),
+.group:nth-child(3),
+.group:last-child {
+  border-top: 1px solid rgba(33, 37, 41, 0.15);
+  padding: 4px 0;
+  h2 {
+    padding: 0 20px;
+  }
+  p {
+    padding: 6px 20px;
+    &:hover {
+      background-color: $dark-blue;
+      color: $main-white;
+    }
+  }
+}

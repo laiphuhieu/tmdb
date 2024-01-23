@@ -2,13 +2,125 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./variables";
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Poppins, sans-serif;
+  font-family: $font-Source-Pro, $font-Arial, sans-serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
+  font-size: $font-main;
+  font-weight: $font-medium;
+  color: $main-black;
+  
 }
+
+//scrollbar css
+html ::-webkit-scrollbar {
+  height: 9px;
+  width: 9px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  background-color: $scrollbar;
+  border-radius: 20px;
+}
+
+html *::-webkit-scrollbar-track {
+  background: 0, 0;
+}
+
+h2 {
+  font-size: $font-main;
+  line-height: 1;
+  font-weight: $font-bold;
+}
+
+h3 {
+  font-size: $font-m;
+  font-weight: $font-semi-bold;
+  margin: 0;
+}
+
+p {
+  font-size: $font-xs;
+  font-weight: $font-light;
+  color: $grey;
+}
+
+//custom tippy
+
+body {
+  .tippy-content {
+    padding: 0;
+  }
+}
+
+.profile {
+  .tippy-content {
+    padding: 4px 8px;
+  }
+}
+
+// .search {
+//   .tippy-box {
+//     transform: translate(-5px, 10px);
+//   }
+//   .tippy-content {
+//     width: 2000px;
+//   }
+// }
+
+//custom circular bar
+
+.CircularProgressbar {
+  .CircularProgressbar-trail {
+    stroke: #204529;
+  }
+  .CircularProgressbar-path {
+    stroke: #21d07a;
+  }
+  .CircularProgressbar-text {
+    fill: $main-white;
+    font-size: $font-s;
+    font-weight: $font-extra-bold;
+  }
+}
+
+.circular-text {
+  width: 90%;
+  transform: translateY(105px);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+//custom scrollbar
+
+.scroll-wrap {
+  .scrollbar {
+    &::-webkit-scrollbar-track {
+      background: 0, 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+  }
+}
+
+//custom tippy
+
+#tippy-10, #tippy-150, #tippy-20 {
+  transform: translate(0px, 64px) !important; 
+}
+
+

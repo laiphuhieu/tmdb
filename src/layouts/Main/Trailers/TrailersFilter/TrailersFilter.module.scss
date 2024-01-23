@@ -1,0 +1,124 @@
+@import "@/assets/styles/referent.scss";
+@import "@/assets/styles/all.scss";
+
+.scroll-loaded {
+  min-height: 0;
+  height: auto;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 323px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  transition: height 0.5s linear;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.card-style-2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: auto;
+  background: 0 0;
+  border: 0;
+  box-shadow: none;
+  border-radius: 8px;
+  margin-left: 20px;
+  z-index: 1;
+  &:first-child {
+    margin-left: 40px;
+  }
+  .card-img {
+    min-width: 300px;
+    width: 300px;
+    height: calc(300px / 1.78);
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    z-index: 1;
+    &:hover {
+      transform: scale(1.05);
+    }
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .options {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 4;
+      opacity: 0.6;
+      color: $main-black;
+      &:hover {
+        opacity: 1;
+        filter: brightness(0) saturate(100%) invert(53%) sepia(33%)
+          saturate(3054%) hue-rotate(156deg) brightness(98%) contrast(99%);
+        cursor: pointer;
+      }
+      .more-btn {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1em;
+        min-height: 1em;
+        width: 1em;
+        height: 1em;
+        line-height: inherit;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url("../../../../assets/images/more.svg");
+        color: $main-black;
+        box-sizing: border-box;
+        font-size: 25.4px;
+      }
+    }
+  }
+  .card-content {
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+    position: relative;
+    white-space: normal;
+
+    .content-title {
+      &:hover {
+        opacity: 1;
+        filter: brightness(0) saturate(100%) invert(53%) sepia(33%)
+          saturate(3054%) hue-rotate(156deg) brightness(98%) contrast(99%);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.button-default {
+  color: $main-white;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}

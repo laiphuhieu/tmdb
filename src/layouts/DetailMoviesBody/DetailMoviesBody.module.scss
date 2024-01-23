@@ -1,0 +1,84 @@
+@import "@/assets/styles/referent.scss";
+
+.custom-bg {
+  background-image: linear-gradient(
+    to right,
+    rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
+    rgba(31.5, 31.5, 31.5, 0.84) 50%,
+    rgba(31.5, 31.5, 31.5, 0.84) 100%
+  );
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 510px;
+}
+
+.poster {
+  display: block;
+  min-width: 300px;
+  width: 300px;
+  height: 450px;
+  position: relative;
+  top: 0;
+  left: 0;
+  &:hover .zoom {
+    opacity: 1;
+    visibility: visible;
+  }
+  .zoom {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+    transition: linear 0.2s;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    .zoom-btn {
+      margin-right: 6px;
+      position: relative;
+      top: 0;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18.2px;
+      min-height: 18.2px;
+      width: 18.2px;
+      height: 18.2px;
+      line-height: inherit;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: inherit;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.card {
+  font-size: $font-xs;
+  color: $main-black;
+  &:hover .card-detail {
+    visibility: visible;
+  }
+  .card-detail {
+    visibility: hidden;
+    background-color: #ffffffe6;
+    position: relative;
+    top: -40px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    z-index: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

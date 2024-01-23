@@ -1,0 +1,129 @@
+@import "@/assets/styles/referent.scss";
+
+.nav-area-left,
+.main-nav-item,
+.main-nav-list {
+  display: flex;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $dark-blue;
+  height: 64px;
+  z-index: 10;
+  transition: top 0.2s linear;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-area-left {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: visible;
+}
+
+.main-nav-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  .main-nav-list {
+    margin-right: 14px;
+    padding: 8px;
+    &:hover .sub-nav {
+      display: block;
+      left: auto;
+    }
+    .main-nav-link {
+      color: $main-white;
+    }
+  }
+}
+
+.sub-nav {
+  display: none;
+  position: absolute;
+  top: 80%;
+  width: 173.078px;
+  max-height: 919px;
+  background-color: $main-white;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: $menu-color;
+  font-size: $font-main;
+  padding: 8px 0;
+  .sub-nav-list:hover {
+    background-color: #f8f9fa;
+  }
+  .sub-nav-item {
+    flex: 1 1 auto;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-direction: row;
+    padding: 3px 64px 3px 24px;
+    color: $main-black;
+    font-weight: $font-regular;
+  }
+}
+
+.nav-area-right {
+  color: $main-white;
+  display: flex;
+  align-items: center;
+  .button-container {
+    display: flex;
+    align-items: center;
+    .language {
+      width: 28px;
+      height: 26px;
+      text-align: center;
+      border: 1px solid $main-white;
+      border-radius: 3px;
+      padding: 3px 5px;
+      transition: linear 0.1s;
+      font-weight: $font-semi-bold;
+      font-size: $font-xs;
+      text-transform: uppercase;
+      &:hover {
+        color: $dark-blue;
+        background-color: $main-white;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.badge {
+  color: $main-white;
+  font-size: 9.6px;
+  line-height: 15px;
+  background: $badge;
+  min-width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  position: absolute;
+  top: 24%;
+  transform: translateX(15px);
+}

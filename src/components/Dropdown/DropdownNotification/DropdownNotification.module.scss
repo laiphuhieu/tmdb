@@ -1,0 +1,24 @@
+@import "@/assets/styles/referent.scss";
+
+.noti-container {
+  padding: 12.8px;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  display: flex;
+  width: 300px;
+  opacity: 1;
+  h2 {
+    margin-bottom: 12px;
+    font-size: 20.8px;
+    line-height: 1;
+    font-weight: $font-bold;
+    span {
+      font-weight: $font-semi-bold;
+      color: $grey2;
+    }
+  }
+  .view-all {
+    text-decoration: underline;
+    color: $main-black;
+    opacity: 0.6;
+  }
+}

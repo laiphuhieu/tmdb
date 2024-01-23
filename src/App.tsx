@@ -1,10 +1,14 @@
 import React from "react";
 
+import AppRoutes from "./routes";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
 function App() {
   return (
-    <div className="pt-[50px]">
-      <h1>this is app page</h1>
-    </div>
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
   );
 }
 

@@ -1,0 +1,16 @@
+@import "@/assets/styles/referent.scss";
+
+.drop-list-container {
+  padding: 4px 1px;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+
+  .drop-list {
+    margin: 0;
+    padding: 7px 16px;
+    font-size: $font-xs;
+    &:hover {
+      color: $main-white;
+      background-color: $dark-blue;
+    }
+  }
+}

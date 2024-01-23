@@ -1,0 +1,159 @@
+@import "@/assets/styles/referent.scss";
+@import "@/assets/styles/all.scss";
+
+.scroll-wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  &::after {
+    content: "";
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0,
+      #fff 100%
+    );
+    will-change: opacity;
+  }
+}
+
+.scroll-loaded {
+  min-height: 0;
+  height: auto;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 355px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  transition: height 0.5s linear;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  white-space: nowrap;
+}
+
+.card-style-1 {
+  margin-left: 40px;
+  width: 150px;
+  min-width: 150px;
+  background: 0 0;
+  border: 0;
+  box-shadow: none;
+  margin-top: 0;
+  overflow: visible;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  border-radius: 8px;
+  .card-img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    min-height: calc(150px * 1.5);
+    height: calc(150px * 1.5);
+    background: #dbdbdb;
+    overflow: hidden;
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .options {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 4;
+      opacity: 0.6;
+      color: $main-black;
+      &:hover {
+        opacity: 1;
+        filter: brightness(0) saturate(100%) invert(53%) sepia(33%)
+          saturate(3054%) hue-rotate(156deg) brightness(98%) contrast(99%);
+        cursor: pointer;
+      }
+      .more-btn {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1em;
+        min-height: 1em;
+        width: 1em;
+        height: 1em;
+        line-height: inherit;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url("../../../../assets/images/more.svg");
+        color: $main-black;
+        box-sizing: border-box;
+        font-size: 25.4px;
+      }
+    }
+  }
+  .card-content {
+    width: 100%;
+    padding: 26px 10px 0 10px;
+    position: relative;
+    white-space: normal;
+    .consensus {
+      position: absolute;
+      top: -19px;
+      left: 10px;
+      user-select: none;
+      pointer-events: none;
+      .circular-bar {
+        width: 25%;
+        height: 25%;
+        background: $dark-blue;
+        border-radius: 50%;
+        .circular-text {
+          width: 85%;
+          transform: translateY(107px);
+          height: -38%;
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          
+        }
+      }
+    }
+    .content-title {
+      &:hover {
+        opacity: 1;
+        filter: brightness(0) saturate(100%) invert(53%) sepia(33%)
+          saturate(3054%) hue-rotate(156deg) brightness(98%) contrast(99%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card-hover {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--imageBorderRadius);
+    z-index: 5;
+    transition: linear 0.1s;
+    opacity: 0;
+  }
+}
