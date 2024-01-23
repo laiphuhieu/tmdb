@@ -105,7 +105,7 @@ const RegisterPage = () => {
 
   return (
     <div className="mt-[64px]">
-      <div className="py-[30px] ">
+      <div className="py-[30px] h-[calc(100vh-64px-327px)]">
         <div className="my-[20px]">
           <div className="w-full flex items-center justify-center">
             <div className="max-w-[1400px] w-full px-[40px]">
@@ -240,18 +240,6 @@ const RegisterPage = () => {
                             />
                           </label>
                         </div>
-
-                        {/* <div className="mt-[16px]">
-                          <label htmlFor="password">
-                            <span className="text-[#212529]">Email</span>
-                            <input
-                              type="email"
-                              // value={email}
-                              // onChange={(e) => setEmail(e.target.value)}
-                              className="rounder-[4px] py-[6px] px-[12px] w-full border-[1px] border-solid border-[#CED4DA] outline-none"
-                            />
-                          </label>
-                        </div> */}
                       </fieldset>
 
                       <p className="mt-[30px] text-black text-[16px]">
